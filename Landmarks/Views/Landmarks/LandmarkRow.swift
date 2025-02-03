@@ -17,12 +17,17 @@ struct LandmarkRow: View {
                 .frame(width: 50, height: 50)
             Text(landmark.name)
             Spacer()
+
+            if landmark.isFavorite {
+                Image(systemName: "star.fill")
+                    .foregroundStyle(.yellow)
+            }
         }
     }
 }
 
 #Preview {
-    ForEach(landmarks, id: \.self) { landmark in
+    ForEach(ModelData().landmarks, id: \.self) { landmark in
         LandmarkRow(landmark: landmark)
     }
 }
